@@ -14,11 +14,12 @@
           pkgs = import nixpkgs {
             inherit system;
             config = { allowUnfree = true; };
-            overlays = [];
+            overlays = [ ];
           };
+          neovimBuilder = import ./lib/neovimBuilder.nix { inherit pkgs; };
         in
         {
-          default = pkgs.neovim;
+          default = (neovimBuilder { }).neovim;
         }
       );
 
