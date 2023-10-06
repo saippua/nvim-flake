@@ -16,17 +16,12 @@
             config = { allowUnfree = true; };
             overlays = [ ];
           };
-          neovimBuilder = import ./lib/neovimBuilder.nix { inherit pkgs; };
+          neovim = (import ./lib { inherit pkgs; }).neovim;
         in
         {
-          default = (neovimBuilder { }).neovim;
+          default = neovim;
         }
       );
-
-      overlays.default = final: prev:
-        let
-        in
-        {
-        };
+      overlays.default = import ./lib/overlay.nix;
     };
 }
