@@ -1,6 +1,11 @@
 {
   inputs = {
     nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { nixpkgs, ... }:
@@ -14,7 +19,7 @@
           pkgs = import nixpkgs {
             inherit system;
             config = { allowUnfree = true; };
-            overlays = [ ];
+            overlays = [ inputs.neovim-nightly-overlay.overlay ];
           };
           neovim = (import ./lib { inherit pkgs; }).neovim;
         in
