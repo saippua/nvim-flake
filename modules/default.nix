@@ -2,5 +2,8 @@
 
 {
   imports = [
+    ./basic
+    ./core
+    ./telescope
   ];
 }

@@ -1,24 +1,29 @@
-{ pkgs, ... }:
+{ pkgs, lib ? pkgs.lib, ... }:
 
-rec {
-  myConfig = pkgs.vimUtils.buildVimPlugin {
-    name = "My Neovim config";
-    src = ../config;
+let
+  vimOptions = lib.evalModules {
+    modules = [
+      { imports = [ ../modules ]; }
+    ];
+
+    specialArgs = { inherit pkgs; };
   };
 
+  inherit (vimOptions.config) vim;
+in
+{
   neovim = pkgs.neovim.override {
     configure = {
       customRC = ''
         lua <<EOF
-          require 'lauri'.init()
+          ${vim.luaConfigRC}
         EOF
+
+        ${vim.finalKeybindings}
       '';
 
       packages.myVimPackage = {
-        start = with pkgs.vimPlugins; [
-          vim-fugitive
-          myConfig
-        ];
+        start = vim.startPlugins;
         opt = [];
       };
     };
