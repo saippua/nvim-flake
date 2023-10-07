@@ -16,7 +16,7 @@
     ./tmux
     ./wilder
     ./nerdcommenter
-    #./git
+    ./git
     #./treesitter
     #./which-key
   ];
