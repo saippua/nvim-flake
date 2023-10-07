@@ -14,7 +14,7 @@
 
     ./harpoon
     ./tmux
-    #./wilder
+    ./wilder
     #./nerdcommenter
     #./git
     #./treesitter
