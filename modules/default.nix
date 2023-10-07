@@ -7,5 +7,6 @@
     ./telescope
     ./lsp
     ./completion
+    ./theme
   ];
 }
