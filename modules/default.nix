@@ -18,6 +18,6 @@
     ./nerdcommenter
     ./git
     ./treesitter
-    #./which-key
+    ./which-key
   ];
 }

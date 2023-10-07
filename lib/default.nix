@@ -18,6 +18,7 @@ in
         ${vim.configRC}
 
         lua <<EOF
+          ${vim.startLuaConfigRC}
           ${vim.luaConfigRC}
         EOF
 
