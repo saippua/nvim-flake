@@ -9,5 +9,6 @@
     ./completion
     ./theme
     ./snippets
+    ./visuals
   ];
 }
