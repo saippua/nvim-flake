@@ -160,7 +160,7 @@
       settings = {
         codelens = { enable = true },
       },
-      cmd = {"${pkgs.ocaml-ng.ocamlPackages_5_1.ocaml-lsp}/bin/ocamllsp"}
+      cmd = {"${pkgs.ocaml-ng.ocamlPackages_5_0.ocaml-lsp}/bin/ocamllsp"}
     }
 
     lspconfig.nil_ls.setup{
