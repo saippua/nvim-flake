@@ -10,5 +10,6 @@
     ./theme
     ./snippets
     ./visuals
+    ./statusline
   ];
 }
