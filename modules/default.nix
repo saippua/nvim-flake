@@ -8,5 +8,6 @@
     ./lsp
     ./completion
     ./theme
+    ./snippets
   ];
 }
