@@ -17,7 +17,7 @@
     ./wilder
     ./nerdcommenter
     ./git
-    #./treesitter
+    ./treesitter
     #./which-key
   ];
 }
