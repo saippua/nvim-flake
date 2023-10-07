@@ -25,6 +25,12 @@ in
       default = "";
     };
 
+    configRC = mkOption {
+      description = "vimrc contents";
+      type = types.lines;
+      default = "";
+    };
+
     luaConfigRC = mkOption {
       description = "vim lua config";
       type = types.lines;

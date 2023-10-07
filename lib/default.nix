@@ -15,6 +15,8 @@ in
   neovim = pkgs.neovim.override {
     configure = {
       customRC = ''
+        ${vim.configRC}
+
         lua <<EOF
           ${vim.luaConfigRC}
         EOF
