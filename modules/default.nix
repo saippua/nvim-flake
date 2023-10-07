@@ -15,7 +15,7 @@
     ./harpoon
     ./tmux
     ./wilder
-    #./nerdcommenter
+    ./nerdcommenter
     #./git
     #./treesitter
     #./which-key
