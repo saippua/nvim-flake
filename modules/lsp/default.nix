@@ -4,6 +4,7 @@
   vim.startPlugins = with pkgs.vimPlugins; [
     nvim-lspconfig  
     cmp-nvim-lsp
+    nvim-metals
   ];
 
   vim.configRC = ''
@@ -154,8 +155,6 @@
           M.toggle_virtlines,
           { silent = true, desc = "[T]oggle [T]ypes", buffer = 0 }
         )
-
-        print("DONE")
       end,
       settings = {
         codelens = { enable = true },
@@ -222,6 +221,49 @@
         },
       },
     }
+
+    local setup_metals = function()
+      metals_config = require('metals').bare_config()
+      metals_config.capabilities = capabilities
+      metals_config.on_attach = function(client, bufnr)
+        default_on_attach(client, bufnr)
+
+        local opts = { noremap=true, silent=true }
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ws', "<cmd>lua require'metals'.worksheet_hover()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ad', "<cmd>lua require'metals'.open_all_diagnostics()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lmc', '<cmd>lua require("metals").commands()<CR>', opts)
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lmi', '<cmd>lua require("metals").toggle_setting("showImplicitArguments")<CR>', opts)
+      end
+
+
+      metals_config.settings = {
+         metalsBinaryPath = "${pkgs.metals}/bin/metals",
+         showImplicitArguments = true,
+         showImplicitConversionsAndClasses = true,
+         showInferredType = true,
+         excludedPackages = {
+           "akka.actor.typed.javadsl",
+           "com.github.swagger.akka.javadsl"
+         }
+      }
+
+      metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+          virtual_text = {
+            prefix = '',
+          }
+        }
+      )
+
+      vim.opt_global.shortmess:remove("F")
+
+      vim.cmd([[augroup lsp]])
+      vim.cmd([[autocmd!]])
+      vim.cmd([[autocmd FileType java,scala,sbt lua require('metals').initialize_or_attach(metals_config)]])
+      vim.cmd([[augroup end]])
+    end
+
+    setup_metals()
   '';
 }
 
