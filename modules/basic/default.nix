@@ -37,7 +37,7 @@
     -- Tabs
     opt.autoindent = true
     opt.cindent = true
-    opt.wrap = true
+    opt.wrap = false
 
     opt.tabstop = 2
     opt.shiftwidth = 2
