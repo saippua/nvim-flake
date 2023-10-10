@@ -49,6 +49,8 @@
       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gI', "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", opts)
       vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wd', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
+
+      vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     end
 
     vim.g.formatsave = false
