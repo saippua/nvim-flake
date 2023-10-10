@@ -1,5 +1,13 @@
 { pkgs, ...}:
 
 {
-  vim.startPlugins = [ pkgs.vimPlugins.vim-fugitive ];
+  vim.startPlugins = with pkgs.vimPlugins; [
+    vim-fugitive
+    lazygit-nvim
+  ];
+
+  vim.nnoremap =
+    {
+      "lg" = "<cmd>LazyGit<CR>";
+    };
 }
