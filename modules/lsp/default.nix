@@ -51,6 +51,9 @@
       vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wd', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
 
       vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+
+      vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fmt', "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+      vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>fmt', "<cmd>lua vim.lsp.buf.format()<CR>", opts)
     end
 
     vim.g.formatsave = false
