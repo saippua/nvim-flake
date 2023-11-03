@@ -18,6 +18,7 @@
     ./nerdcommenter
     ./git
     ./treesitter
+    ./formatter
     # ./which-key
   ];
 }
