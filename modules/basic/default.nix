@@ -16,11 +16,13 @@
     opt.wildignore = "__pycache__"
     opt.wildignore:append { "*.o", "*~", "*.pyc", "*pycache*" }
 
+    opt.ttimeout = true -- time out for key codes
+    opt.ttimeoutlen = 100 -- wait up to 100ms after Esc for special key
     opt.showmode = false
     opt.showcmd = true
     opt.cmdheight = 1 -- Height of the command bar
     opt.incsearch = true -- Makes search act like search in modern browsers
-    opt.showmatch = true -- show matching brackets when text indicator is over them
+    opt.showmatch = false -- show matching brackets when text indicator is over them
     opt.relativenumber = true -- Show line numbers
     opt.number = true -- But show the actual number for the line we're on
     opt.ignorecase = true -- Ignore case when searching...
