@@ -36,7 +36,7 @@
       mapping = {
         ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c'}),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c'}),
+        ['<C-a>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c'}),
         ['<C-y>'] = cmp.config.disable,
         ['<C-e>'] = cmp.mapping({
           i = cmp.mapping.abort(),

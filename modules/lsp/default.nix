@@ -5,7 +5,8 @@
     nvim-lspconfig  
     cmp-nvim-lsp
     nvim-metals
-  ];
+    null-ls-nvim
+  ] ++ (with pkgs; [ eslint_d ]);
 
   vim.configRC = ''
     autocmd filetype nix setlocal tabstop=2 shiftwidth=2 softtabstop=2
@@ -196,6 +197,39 @@
       cmd = { "${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server", "--stdio" }
     }
 
+    local null_ls = require("null-ls")
+    local u = require("null-ls.utils")
+
+    local formatting = null_ls.builtins.formatting
+    local diagnostics = null_ls.builtins.diagnostics
+    local code_actions = null_ls.builtins.code_actions
+
+    null_ls.setup({
+      root_dir = u.root_pattern(".null-ls-root", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", "Makefile", ".git"),
+      border = "rounded",
+      sources = {
+        formatting.prettier,
+        formatting.stylua,
+        formatting.ocamlformat,
+
+        -- diagnostics
+        diagnostics.eslint_d.with({
+          command = "${pkgs.eslint_d}/bin/eslint_d",
+          condition = function(utils)
+            return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
+          end,
+        }),
+
+        -- code actions
+        code_actions.eslint_d.with({
+          condition = function(utils)
+            return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
+          end,
+        }),
+      },
+    })
+
+    -- Elixir
     lspconfig.elixirls.setup{
       on_init = custom_init;
       capabilities = capabilities;
