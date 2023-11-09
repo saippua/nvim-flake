@@ -58,49 +58,6 @@
 		telescope.load_extension("live_grep_args")
     telescope.load_extension("file_browser")
     telescope.load_extension("fzf")
-
-    -- require("telescope").setup {
-    --   defaults = {
-    --     file_ignore_patterns = {
-    --         "node_modules/.*",
-    --     },
-    --     vimgrep_arguments = {
-    --       "${pkgs.ripgrep}/bin/rg",
-    --       "--color=never",
-    --       "--no-heading",
-    --       "--with-filename",
-    --       "--line-number",
-    --       "--column",
-    --       "--smart-case"
-    --     },
-    --     pickers = {
-    --       find_command = {
-    --         "${pkgs.fd}/bin/fd --strip-cwd-prefix --type f",
-    --       },
-    --     },
-
-    --     extensions = {
-    --       fzy_native = {
-    --         override_generic_sorter = true,
-    --         override_file_sorter = true,
-    --       },
-
-    --       fzf_writer = {
-    --         use_highlighter = false,
-    --         minimum_grep_characters = 6,
-    --       },
-
-    --       live_grep_args = {
-    --         mappings = {
-    --           i = {
-    --             ["<M-g>"] = quote_prompt,
-    --             ["<M-u>"] = global_prompt,
-    --           },
-    --         },
-    --       },
-    --     },
-    --   },
-    -- }
   '';
 
   vim.nnoremap =
