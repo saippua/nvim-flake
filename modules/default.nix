@@ -19,6 +19,7 @@
     ./git
     ./treesitter
     ./formatter
+    ./mind
     # ./which-key
   ];
 }

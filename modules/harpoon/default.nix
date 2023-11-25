@@ -10,7 +10,7 @@
     vim.nnoremap =
       {
         "<leader>ws" = "<cmd>lua require'metals'.worksheet_hover()<CR>";
-        "<leader>mc" = "<cmd>lua require('telescope').extensions.metals.commands()<CR>";
+        "<leader>mec" = "<cmd>lua require('telescope').extensions.metals.commands()<CR>";
         "<leader>ha" = "<cmd>lua require('harpoon.mark').add_file()<CR>";
         "<C-e>" =  "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>";
         "<A-u>" = "<cmd>lua require('harpoon.ui').nav_file(1)<CR>";
