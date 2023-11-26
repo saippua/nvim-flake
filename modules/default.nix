@@ -20,6 +20,7 @@
     ./treesitter
     ./formatter
     ./mind
+    ./twilight
     # ./which-key
   ];
 }
