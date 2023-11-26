@@ -21,6 +21,7 @@
     ./formatter
     ./mind
     ./twilight
+    ./git-worktree
     # ./which-key
   ];
 }

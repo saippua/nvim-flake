@@ -84,6 +84,7 @@
     telescope.load_extension("file_browser")
     telescope.load_extension("fzf")
     telescope.load_extension("advanced_git_search")
+    telescope.load_extension('git_worktree')
   '';
 
   vim.nnoremap =
@@ -97,6 +98,8 @@
       "<leader>fr" = "<cmd> lua require('telescope.builtin').registers()<CR>";
       "<leader>fo" = "<cmd> lua require('telescope.builtin').oldfiles()<CR>";
       "<leader>rs" = "<cmd> lua require('telescope.builtin').resume()<CR>";
+      "<leader>sr" = "<cmd> lua require('telescope').extensions.git_worktree.git_worktrees()<CR>";
+      "<leader>sR" = "<cmd> lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>";
       "<leader>fe" = "<cmd> Telescope file_browser path=%:p:h select_buffer=true<CR>";
 
       "<leader>tlsb" = "<cmd> Telescope lsp_document_symbols<CR>";
