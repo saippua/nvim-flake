@@ -22,6 +22,7 @@
     ./mind
     ./twilight
     ./git-worktree
+    ./gen
     # ./which-key
   ];
 }
