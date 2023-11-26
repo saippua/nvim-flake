@@ -12,6 +12,7 @@
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
+      customPlugins = import ./lib/customPlugins.nix;
     in
     {
       packages = forAllSystems (system: 
@@ -19,7 +20,10 @@
           pkgs = import nixpkgs {
             inherit system;
             config = { allowUnfree = true; };
-            overlays = [ inputs.neovim-nightly-overlay.overlay ];
+            overlays = [
+              inputs.neovim-nightly-overlay.overlay
+              customPlugins
+            ];
           };
           neovim = (import ./lib { inherit pkgs; }).neovim;
         in
