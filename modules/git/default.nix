@@ -8,7 +8,6 @@
 
   vim.nnoremap =
     {
-      "<leader>lgg" = "<cmd>LazyGit<CR>";
       "<leader>lg" = "<cmd>LazyGit<CR>";
     };
 }
