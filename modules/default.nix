@@ -23,6 +23,7 @@
     ./twilight
     ./git-worktree
     ./gen
+    ./surround
     # ./which-key
   ];
 }
