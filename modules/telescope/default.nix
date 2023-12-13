@@ -104,6 +104,7 @@
 
       "<leader>tlsb" = "<cmd> Telescope lsp_document_symbols<CR>";
       "<leader>tlsw" = "<cmd> Telescope lsp_workspace_symbols<CR>";
+      "<leader>wss"  = "<cmd> Telescope lsp_dynamic_workspace_symbols<CR>";
 
       "<leader>tlr" = "<cmd> Telescope lsp_references<CR>";
       "<leader>tli" = "<cmd> Telescope lsp_implementations<CR>";
