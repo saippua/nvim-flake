@@ -25,6 +25,8 @@
     ./gen
     ./surround
     ./indent
+    ./keybindings
+    ./trouble
     # ./which-key
   ];
 }
