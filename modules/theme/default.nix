@@ -7,7 +7,7 @@
 
   vim.startPlugins = with pkgs.vimPlugins; [ onedark-nvim ];
 
-  vim.luaConfigRC = ''
+  vim.startLuaConfigRC = ''
     require('onedark').setup {
       style = "darker",
       transparent = "true",
@@ -19,5 +19,6 @@
     vim.cmd("hi NormalFloat guibg=#151a1e")
 
     vim.api.nvim_set_hl(0, 'VirtNonText', { fg = "#535965" })
+    vim.api.nvim_set_hl(0, 'IblIndent', { fg = "#24272e" })
   '';
 }

@@ -24,6 +24,7 @@
     ./git-worktree
     ./gen
     ./surround
+    ./indent
     # ./which-key
   ];
 }
