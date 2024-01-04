@@ -4,6 +4,7 @@
   imports = [
     ./basic
     ./core
+    ./commands
     ./telescope
     ./lsp
     ./completion
