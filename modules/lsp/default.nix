@@ -2,7 +2,7 @@
 
 {
   vim.startPlugins = with pkgs.vimPlugins; [
-    nvim-lspconfig  
+    nvim-lspconfig
     cmp-nvim-lsp
     nvim-metals
     null-ls-nvim
@@ -139,6 +139,14 @@
 
       semantic.extend_capabilities(updated_capabilities)
     end
+
+    lspconfig.kotlin_language_server.setup{
+      on_init = custom_init;
+      capabilities = capabilities;
+      on_attach = default_on_attach;
+
+      cmd = {"${pkgs.kotlin-language-server}/bin/kotlin-language-server"}
+    }
 
     lspconfig.ocamllsp.setup{
       capabilities = capabilities;
