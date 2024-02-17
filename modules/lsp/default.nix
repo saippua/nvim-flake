@@ -245,6 +245,12 @@
       cmd = {"${pkgs.elixir-ls}/bin/elixir-ls"}
     }
 
+    lspconfig.hls.setup{
+      on_init = custom_init;
+      capabilities = capabilities;
+      on_attach = default_on_attach;
+    }
+
     -- Python config
     local util = require("lspconfig/util")
 
