@@ -249,6 +249,13 @@
       on_init = custom_init;
       capabilities = capabilities;
       on_attach = default_on_attach;
+      settings = {
+        haskell = {
+          plugin = {
+            stan = { globalOn = false }
+          }
+        }
+      }
     }
 
     -- Python config
