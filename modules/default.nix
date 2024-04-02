@@ -28,6 +28,7 @@
     ./indent
     ./keybindings
     ./trouble
+    ./sql
     # ./which-key
   ];
 }
