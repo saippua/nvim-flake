@@ -29,6 +29,7 @@
     ./keybindings
     ./trouble
     ./sql
+    ./indentscope
     # ./which-key
   ];
 }
