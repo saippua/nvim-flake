@@ -30,6 +30,7 @@
     ./trouble
     ./sql
     ./indentscope
+    ./spectre
     # ./which-key
   ];
 }
