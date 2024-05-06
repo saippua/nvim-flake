@@ -148,6 +148,19 @@
       cmd = {"${pkgs.kotlin-language-server}/bin/kotlin-language-server"}
     }
 
+    lspconfig.elmls.setup {
+      capabilities = capabilities;
+      on_attach = default_on_attach;
+      init_options = {
+         elmPath = "${pkgs.elmPackages.elm}/bin/elm",
+         elmFormatPath = "${pkgs.elmPackages.elm-format}/bin/elm-format",
+         elmTestPath = "${pkgs.elmPackages.elm-test}/bin/elm-test",
+         elmAnalyseTrigger = "change"
+      };
+      cmd = { "${pkgs.elmPackages.elm-language-server}/bin/elm-language-server" };
+      root_dir = lspconfig.util.root_pattern("elm.json");
+    }
+
     lspconfig.ocamllsp.setup{
       capabilities = capabilities;
       on_init = custom_init;
