@@ -6,7 +6,7 @@
   vim.luaConfigRC = ''
     require("ibl").setup {
         indent = { highlight = "IblIndent", fmt = "nocombine" },
-        scope = { enabled = false },
+        scope = { enabled = true },
     }
   '';
 }
