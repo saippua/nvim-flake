@@ -48,6 +48,12 @@ in
       default = [ ];
       type = with types; listOf (nullOr package);
     };
+
+    dependencies = mkOption {
+      description = "List of dependencies for plugins";
+      default = [ ];
+      type = with types; listOf (nullOr package);
+    };
   };
   config =
     let

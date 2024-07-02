@@ -1,5 +1,12 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.opt.nu = true
 vim.opt.rnu = false
+
+vim.opt.foldmethod = "marker"
+vim.opt.foldlevel = 0
+vim.opt.modelines = 1
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

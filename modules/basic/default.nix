@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-  vim.startPlugins = [ pkgs.vimPlugins.plenary-nvim ];
+  vim.startPlugins = [ pkgs.vimPlugins.plenary-nvim pkgs.vimPlugins.kwbd ];
 
   vim.nnoremap = { "<space>" = "<nop>"; };
 
-  vim.luaConfigRC = import ./config.lua;
+  vim.luaConfigRC = builtins.readFile ./config.lua;
 }

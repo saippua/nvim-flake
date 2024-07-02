@@ -1,36 +1,30 @@
 {
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
+    nixpkgs.url = github:nixos/nixpkgs/nixos-23.11;
 
     neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+      url = "github:nix-community/neovim-nightly-overlay/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs @ { nixpkgs, ... }:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" ];
-      forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
+      system = "x86_64-linux";
+
       customPlugins = import ./lib/customPlugins.nix;
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
+        overlays = [
+          inputs.neovim-nightly-overlay.overlays.default
+          customPlugins
+        ];
+      };
+      neovim = (import ./lib { inherit pkgs; }).neovim;
     in
     {
-      packages = forAllSystems (system: 
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            config = { allowUnfree = true; };
-            overlays = [
-              inputs.neovim-nightly-overlay.overlay
-              customPlugins
-            ];
-          };
-          neovim = (import ./lib { inherit pkgs; }).neovim;
-        in
-        {
-          default = neovim;
-        }
-      );
+      packages.${system}.default = neovim;
       overlays.default = import ./lib/overlay.nix;
     };
 }
