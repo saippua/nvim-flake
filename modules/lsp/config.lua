@@ -93,7 +93,12 @@ lspconfig.lua_ls.setup {
 
 lspconfig.arduino_language_server.setup {
     on_init = custom_init;
-    capabilities = capabilities;
+    -- Disable semantic tokens for arduino LSP
+    capabilities = vim.tbl_deep_extend("force", capabilities,
+        {
+            TextDocument = { semanticTokens = vim.NIL, },
+            workspace = { semanticTokens = vim.NIL, },
+        }),
     on_attach = function(client, bufnr)
         attach_keymaps(client, bufnr)
     end,
@@ -104,7 +109,7 @@ lspconfig.arduino_language_server.setup {
         '-clangd', 'clangd',
         '-cli', 'arduino-cli',
         '-cli-config', '/home/localadmin/.arduino15/arduino-cli.yaml',
-        '-fqbn', 'esp32:esp32',
+        '-fqbn', 'esp32:esp32:esp32',
         '-log',
     }
 }
