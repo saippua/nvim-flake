@@ -1,11 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-23.11;
-
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = github:nixos/nixpkgs/nixos-24.05;
   };
 
   outputs = inputs @ { nixpkgs, ... }:
@@ -17,7 +12,6 @@
         inherit system;
         config = { allowUnfree = true; };
         overlays = [
-          inputs.neovim-nightly-overlay.overlays.default
           customPlugins
         ];
       };

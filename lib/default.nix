@@ -10,7 +10,7 @@ let
 
     inherit (vimOptions.config) vim;
 
-    neovim-wrapped = pkgs.wrapNeovim pkgs.neovim {
+    neovim-wrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
         configure = {
             customRC = ''
                 ${vim.configRC}
