@@ -19,6 +19,9 @@
     in
     {
       packages.${system}.default = neovim;
-      overlays.default = (import ./lib/overlay.nix { inherit customPlugins; });
+      overlays.default = (import ./lib/overlay.nix {
+        inherit customPlugins;
+        nightly-overlay = inputs.neovim-nightly-overlay.overlays.default;
+        });
     };
 }
