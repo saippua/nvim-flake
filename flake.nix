@@ -19,6 +19,6 @@
     in
     {
       packages.${system}.default = neovim;
-      overlays.default = import ./lib/overlay.nix;
+      overlays.default = (import ./lib/overlay.nix { inherit pkgs; });
     };
 }

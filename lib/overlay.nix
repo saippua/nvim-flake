@@ -1,5 +1,5 @@
+{ pkgs }:
 final: prev:
-
 {
-  olli-neovim = (prev.callPackage ./. { }).neovim;
+  saippua-neovim = (prev.callPackage ./. { inherit pkgs; }).neovim;
 }
