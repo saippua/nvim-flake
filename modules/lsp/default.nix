@@ -11,6 +11,7 @@
     lua-language-server
     nixpkgs-fmt # Formatter for nixpkgs
     arduino-language-server
+    pyright
   ];
 
   vim.configRC = ''

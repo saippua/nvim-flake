@@ -1,5 +1,5 @@
 final: prev:
 
 {
-  lauri-neovim = (prev.callPackage ./. { }).neovim;
+  olli-neovim = (prev.callPackage ./. { }).neovim;
 }

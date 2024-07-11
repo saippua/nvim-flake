@@ -11,8 +11,18 @@ let
     } // it);
 in
 {
+  options.lsp = {
+    nnoremap = mkMappingOption {
+      description = "Defines 'Normal mode' mappings for LSP";
+    };
+    vnoremap = mkMappingOption {
+      description = "Defines 'Visual and Select mode' mappings";
+    };
+  };
   options.vim = {
-    nnoremap = mkMappingOption { description = "Defines 'Normal mode' mappings"; };
+    nnoremap = mkMappingOption { 
+      description = "Defines 'Normal mode' mappings";
+    };
 
     vnoremap = mkMappingOption {
       description = "Defines 'Visual and Select mode' mappings";
@@ -59,27 +69,22 @@ in
     let
       filterNonNull = filterAttrs (name: value: value != null);
 
-      matchCtrl = match "Ctrl-(.)(.*)";
-
-      mapKeyBinding = it:
-        let
-          groups = matchCtrl it;
-        in
-        if groups == null
-        then it
-        else "<C-${toUpper (head groups)}>${head (tail groups)}";
-
       mapVimBinding = prefix: mappings:
-        mapAttrsFlatten (name: value: "${prefix} ${mapKeyBinding name} ${value}")
+        mapAttrsFlatten (name: value: "${prefix} ${name} ${value}")
           (filterNonNull mappings);
 
       nnoremap = mapVimBinding "nnoremap" config.vim.nnoremap;
       vnoremap = mapVimBinding "vnoremap" config.vim.vnoremap;
+      lsp_nnoremap = mapVimBinding "nnoremap" config.lsp.nnoremap;
+      lsp_vnoremap = mapVimBinding "vnoremap" config.lsp.vnoremap;
     in
       {
       vim.finalKeybindings = ''
         ${builtins.concatStringsSep "\n" nnoremap}
         ${builtins.concatStringsSep "\n" vnoremap}
+
+        ${builtins.concatStringsSep "\n" lsp_nnoremap}
+        ${builtins.concatStringsSep "\n" lsp_vnoremap}
       '';
     };
 }

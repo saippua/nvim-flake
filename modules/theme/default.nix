@@ -1,12 +1,12 @@
 { pkgs, ... }:
 {
-      vim.configRC = ''
-    colorscheme kanagawa
-  '';
-  
   vim.startPlugins = with pkgs.vimPlugins; [ kanagawa-nvim ];
 
-  vim.startLuaConfigRC = ''
+  vim.configRC = /* vim */ ''
+    colorscheme kanagawa
+  '';
+
+  vim.startLuaConfigRC = /* lua */ ''
     require('kanagawa').setup {
         theme = "wave",
         background = {
