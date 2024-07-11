@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay/master";
@@ -25,6 +25,6 @@
     in
     {
       packages.${system}.default = neovim;
-      overlays.default = import ./lib/overlay.nix;
+      overlays.default = (import ./lib/overlay.nix { inherit pkgs; });
     };
 }

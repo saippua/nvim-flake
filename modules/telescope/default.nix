@@ -12,8 +12,9 @@
   ];
 
   vim.dependencies = with pkgs; [
-    ripgrep
-    fd
+# These are defined system wide, so they are disabled here to prevent collisions
+    # ripgrep
+    # fd
   ];
 
 
