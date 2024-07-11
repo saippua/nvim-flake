@@ -1,5 +1,5 @@
 ## How to run
 
 ```
-nix run github:laaksonel/nvim-flake
+nix run github:saippua/nvim-flake
 ```
