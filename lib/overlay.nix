@@ -1,5 +1,5 @@
-{ pkgs }:
+{ customPlugins, ... }:
 final: prev:
 {
-  saippua-neovim = (prev.callPackage ./. { inherit pkgs; }).neovim;
+  saippua-neovim = (prev.callPackage ./. { inherit customPlugins; }).neovim;
 }
