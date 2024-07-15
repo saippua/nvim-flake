@@ -122,11 +122,12 @@
                   TextDocument = { semanticTokens = vim.NIL, },
                   workspace = { semanticTokens = vim.NIL, },
               }),
+          -- capabilities = { TextDocument = { semanticTokens = vim.NIL, }, workspace = { semanticTokens = vim.NIL, }, },
           on_attach = function(client, bufnr)
               attach_keymaps(client, bufnr)
           end,
-          settings = {
-          },
+          settings = {},
+          filetypes = { 'arduino', 'cpp' },
           cmd = {
               'arduino-language-server',
               '-clangd', 'clangd',
