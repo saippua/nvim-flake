@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  vim.startPlugins = [ pkgs.vimPlugins.plenary-nvim pkgs.vimPlugins.kwbd ];
+  vim.startPlugins = [
+    pkgs.vimPlugins.plenary-nvim
+    pkgs.vimPlugins.kwbd
+  ];
 
   vim.startLuaConfigRC = /* lua */ ''
     vim.g.mapleader = " "
@@ -86,6 +89,6 @@
 
     vim.opt.ignorecase = true
     vim.opt.smartcase = true
-'';
+  '';
 
 }

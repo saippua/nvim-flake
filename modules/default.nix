@@ -3,6 +3,7 @@
 {
   imports = [
     ./core
+    ./arduino
     ./theme
     ./statusline
     ./telescope
