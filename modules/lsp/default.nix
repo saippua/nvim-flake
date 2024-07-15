@@ -10,8 +10,8 @@
     nil # Nix language server
     lua-language-server
     nixpkgs-fmt # Formatter for nixpkgs
-    arduino-language-server
     pyright
+    # arduino-language-server # Doesn't work on latest nvim
   ];
 
   vim.configRC = ''
