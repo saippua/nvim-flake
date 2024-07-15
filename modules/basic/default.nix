@@ -4,6 +4,7 @@
   vim.startPlugins = [
     pkgs.vimPlugins.plenary-nvim
     pkgs.vimPlugins.kwbd
+    pkgs.vimPlugins.comment-nvim
   ];
 
   vim.startLuaConfigRC = /* lua */ ''
