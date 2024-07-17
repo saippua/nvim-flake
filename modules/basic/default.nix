@@ -8,6 +8,9 @@
   ];
 
   vim.startLuaConfigRC = /* lua */ ''
+
+    require('Comment').setup()
+
     vim.g.mapleader = " "
     vim.g.maplocalleader = " "
 
