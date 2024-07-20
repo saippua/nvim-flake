@@ -53,7 +53,7 @@
           -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
           -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gI', "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", opts)
           vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wd', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
-
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>h', function() vim.cmd("ClangdSwitchSourceHeader") end)
           -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>vf', "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
           -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>vd', "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
