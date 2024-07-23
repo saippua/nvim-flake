@@ -150,7 +150,7 @@
         capabilities = capabilities;
         on_attach = function(client, bufnr)
           attach_keymaps(client, bufnr)
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>h', function() vim.cmd("ClangdSwitchSourceHeader") end)
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>h', "<cmd>ClangdSwitchSourceHeader<CR>", { noremap=true, silent=true })
         end,
       }
     '';
