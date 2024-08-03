@@ -83,45 +83,5 @@
 
     telescope.load_extension 'file_browser'
   '';
-
-  vim.nnoremap =
-    {
-      # "<leader>pv"  = ":Telescope file_browser path=%:p:h<CR>";
-      "<leader>conf" = ":Telescope file_browser path=~/nvim-flake/ select_buffer=true<CR>";
-      "<leader>snip" = ":Telescope file_browser path=~/nvim-flake/snippets/ select_buffer=true<CR>";
-      "<leader>pf" = "<cmd> lua require('telescope.builtin').find_files{ hidden = true }<CR>";
-      "<leader>ps" = "<cmd> lua require('telescope.builtin').live_grep{ }<CR>";
-      "<leader>pg" = "<cmd> lua require('telescope.builtin').git_files{ }<CR>";
-      "<leader>va" = "<cmd> lua require('telescope.builtin').diagnostics{ }<CR>";
-      "<leader>pq" = "<cmd> lua require('telescope.builtin').quickfix{ }<CR>";
-      "<leader>pb" = "<cmd> lua require('telescope.builtin').buffers{ }<CR>";
-    };
-
-  vim.vnoremap =
-    {
-      "<leader>ps" = "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<CR>";
-    };
-
-  lsp.nnoremap = {
-    "gr" = "<cmd>lua require('telescope.builtin').lsp_references()<CR>";
-    "gI" = "<cmd>lua require('telescope.builtin').lsp_implemenation()<CR>";
-    "gs" = "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>";
-    "gS" = "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>";
-
-    "gD" = "<cmd>lua vim.lsp.buf.declaration()<CR>";
-    "gd" = "<cmd>lua vim.lsp.buf.definition()<CR>";
-    "gtd" = "<cmd>lua vim.lsp.buf.definition()<CR>";
-    "<leader>dn" = "<cmd>lua vim.diagnostic.goto_next()<CR>";
-    "<leader>dp" = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
-
-    "K" = "<cmd>lua vim.lsp.buf.hover()<CR>";
-    "<C-S>" = "<cmd>lua vim.lsp.buf.signature_help()<CR>";
-    "<leader>rn" = "<cmd>lua vim.lsp.buf.rename()<CR>";
-
-    "<leader>dl" = "<cmd>lua vim.diagnostic.open_float()<CR>";
-
-    "<leader>vf" = "<cmd>lua vim.lsp.buf.code_action()<CR>";
-    "<leader>vd" = "<cmd>lua vim.diagnostic.open_float()<CR>";
-  };
 }
 

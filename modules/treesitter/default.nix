@@ -17,10 +17,11 @@
         incremental_selection = {
             enable = true,
             keymaps = {
-                init_selection = "<CR>",
-                node_incremental = "grn",
-                scope_incremental = "grc",
-                node_decremental = "grm",
+                -- Keybindings are defined in the keybindings module
+                init_selection = false,
+                node_incremental = false,
+                scope_incremental = false,
+                node_decremental = false,
             },
         },
     }
