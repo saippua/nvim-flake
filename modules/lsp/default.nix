@@ -11,7 +11,6 @@
     lua-language-server
     nixpkgs-fmt # Formatter for nixpkgs
     pyright
-    # arduino-language-server # Doesn't work on latest nvim
   ];
 
   vim.configRC = ''
@@ -82,29 +81,6 @@
                       showWord = "Disable",
                   },
               },
-          }
-      }
-
-      lspconfig.arduino_language_server.setup {
-          on_init = custom_init;
-          -- Disable semantic tokens for arduino LSP
-          capabilities = vim.tbl_deep_extend("force", capabilities,
-              {
-                  TextDocument = { semanticTokens = vim.NIL, },
-                  workspace = { semanticTokens = vim.NIL, },
-              }),
-          on_attach = function(client, bufnr)
-              custom_attach(client, bufnr)
-          end,
-          settings = {
-          },
-          cmd = {
-              'arduino-language-server',
-              '-clangd', 'clangd',
-              '-cli', 'arduino-cli',
-              '-cli-config', '/home/localadmin/.arduino15/arduino-cli.yaml',
-              '-fqbn', 'esp32:esp32:esp32',
-              '-log',
           }
       }
 
