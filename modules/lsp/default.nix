@@ -103,7 +103,7 @@
           "--background-index",
           "--clang-tidy",
           "--completion-style=bundled",
-          "--query-driver=/nix/store/n356cbpp74lkscr6njiwakj4flyndff6-xtensa-esp32-elf-esp-idf-v5.1.3/bin/xtensa-esp32-elf-*",
+          "--query-driver=/nix/store/*-xtensa-esp32-elf-esp-idf-v5.1.4/bin/xtensa-esp32-elf-*",
         }
       }
     '';
