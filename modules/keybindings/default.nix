@@ -46,7 +46,8 @@
 
         -- Telescope
         vim.keymap.set('n', '<leader>wd', telescope.lsp_document_symbols, opts)
-        vim.keymap.set('n', "gr", telescope.lsp_references, opts)
+        vim.keymap.set('n', "grr", telescope.lsp_references, opts) -- default
+        vim.keymap.set('n', "<leader>gr", vim.lsp.buf.references, opts)
         vim.keymap.set('n', "gI", telescope.lsp_implementations, opts)
         vim.keymap.set('n', "gs", telescope.lsp_document_symbols, opts)
         vim.keymap.set('n', "gS", telescope.lsp_workspace_symbols, opts)
@@ -58,6 +59,7 @@
         vim.keymap.set('n', "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set('n', "<leader>dl", vim.diagnostic.open_float, opts)
         vim.keymap.set('n', "<leader>vf", vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', "gra", vim.lsp.buf.code_action, opts) -- default
         vim.keymap.set('n', "<leader>vd", vim.diagnostic.open_float, opts)
         vim.keymap.set('n', "<C-S>", vim.lsp.buf.signature_help, opts)
 
