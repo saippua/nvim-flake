@@ -8,6 +8,7 @@
     telescope-file-browser-nvim
     # telescope-fzf-native-nvim
     telescope-live-grep-args-nvim
+    telescope-ui-select-nvim
     # advanced-git-search
   ];
 
@@ -76,12 +77,17 @@
                       ["%"] = fb_actions.create,
                   }
               }
+          },
+          ['ui-select'] = {
+            require('telescope.themes').get_dropdown {
+            }
           }
       }
     }
 
 
     telescope.load_extension 'file_browser'
+    telescope.load_extension 'ui-select'
   '';
 }
 
