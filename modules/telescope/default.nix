@@ -13,7 +13,7 @@
   ];
 
   vim.dependencies = with pkgs; [
-# These are defined system wide, so they are disabled here to prevent collisions
+    # These are defined system wide, so they are disabled here to prevent collisions
     # ripgrep
     # fd
   ];
@@ -79,8 +79,8 @@
               }
           },
           ['ui-select'] = {
-            require('telescope.themes').get_dropdown {
-            }
+              require('telescope.themes').get_dropdown {
+              }
           }
       }
     }
