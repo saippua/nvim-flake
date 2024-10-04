@@ -20,6 +20,7 @@
   vim.luaConfigRC = /* lua */
     ''
       local lspconfig = require('lspconfig')
+      vim.lsp.set_log_level("ERROR")
 
       local custom_init = function(client)
           client.config.flags = client.config.flags or {}
@@ -33,7 +34,6 @@
       -- Update LSP capabilities from cmp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
 
 
       -- Extend completion sources with nvim_lsp
