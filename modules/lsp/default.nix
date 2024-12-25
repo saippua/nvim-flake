@@ -11,6 +11,7 @@
     lua-language-server
     nixpkgs-fmt # Formatter for nixpkgs
     pyright
+    nodePackages.typescript-language-server # tsserver
   ];
 
   vim.configRC = ''
@@ -42,6 +43,14 @@
       table.insert(config.sources, { name = 'nvim_lsp', })
       table.insert(config.sources, { name = 'nvim_lsp_signature_help', })
       cmp.setup(config)
+
+      lspconfig.tsserver.setup {
+        on_init = custom_init;
+        capabilities = capabilities;
+        on_attach = function(client, bufnr)
+          custom_attach(client, bufnr)
+        end
+      }
 
       lspconfig.nil_ls.setup {
           on_init = custom_init;
