@@ -35,7 +35,6 @@
               },
           },
           file_ignore_patterns = {
-              "node_modules/.*",
               ".git/.*",
               "flake.lock",
               "mlruns/.*",

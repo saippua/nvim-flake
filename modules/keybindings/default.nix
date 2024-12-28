@@ -3,19 +3,55 @@
   vim.luaConfigRC = /* lua */ ''
     local opts = { silent = false }
 
+    vim.keymap.set('v', 'd', '"_d', opts) -- Deleting doesn't override yank
+    vim.keymap.set('n', 'dd', '"_dd', opts) -- Deleting doesn't override yank
+    vim.keymap.set('v', 'c', '"_c', opts) -- Changing doesn't override yank
+    vim.keymap.set('v', 'p', '"+P', opts) -- Pasting doesn't override yank
+    vim.keymap.set('v', 'P', '"+P', opts) -- Pasting doesn't override yank
+    vim.keymap.set({'n', 'v'}, 'y', '"+y', opts) -- Yank to system clipboard
+    vim.keymap.set({'n', 'v'}, 'Y', '"+Y', opts) -- Yank to system clipboard
+    vim.keymap.set({'n', 'v'}, 'x', '"+x', opts) -- Cut to system clipboard
+    vim.keymap.set({'n', 'v'}, 'X', '"+X', opts) -- Cut to system clipboard
+    vim.keymap.set('n', 'p', '"+p', opts) -- Paste from system clipboard
+    vim.keymap.set('n', 'P', '"+P', opts) -- Paste from system clipboard
+
     vim.keymap.set('n', '<leader>pv', ":Telescope file_browser path=%:p:h<CR>", opts)
     vim.keymap.set('n', '<C-S-W><C-S-L>', ":tabnext<CR>", opts)
     vim.keymap.set('n', '<C-S-W><C-S-H>', ":tabprevious<CR>", opts)
 
     -- Telescope
     local telescope = require('telescope.builtin')
+    local telescope_rg = require('telescope-live-grep-args.shortcuts')
+    local lga_actions = require('telescope-live-grep-args.actions')
     local file_browser = require("telescope").extensions.file_browser.file_browser
+    local live_grep_args = require('telescope').extensions.live_grep_args
 
-    vim.keymap.set('v', "<leader>ps", require('telescope-live-grep-args.shortcuts').grep_visual_selection, opts);
+    local vga = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+
+      "--no-ignore" 
+    }
+
+    vim.keymap.set('v', "<leader>ps", function() telescope_rg.grep_visual_selection() end, opts);
+    vim.keymap.set('v', "<leader>pS", function() telescope_rg.grep_visual_selection{ vimgrep_arguments = vga, } end, opts);
     vim.keymap.set('n', "<leader>conf", function() file_browser{ path="~/nvim-flake/", select_buffer=true } end, opts);
     vim.keymap.set('n', "<leader>snip", function() file_browser{ path="~/nvim-flake/snippets/", select_buffer=true } end, opts);
     vim.keymap.set('n', "<leader>pf", function() telescope.find_files{ hidden = true } end, opts)
-    vim.keymap.set('n', "<leader>ps", telescope.live_grep, opts)
+    vim.keymap.set('n', "<leader>pF", function() telescope.find_files{ hidden = true, no_ignore = true } end, opts)
+    vim.keymap.set('n', "<leader>ps", function() live_grep_args.live_grep_args() end, opts)
+    vim.keymap.set('n', "<leader>pS", function() live_grep_args.live_grep_args({
+      vimgrep_arguments = vga,
+      -- -- Doesn't work for some reason (maybe outdated plugin)
+      -- additional_args = {
+      --   "--no-ignore"
+      -- }
+    }) end, opts)
     vim.keymap.set('n', "<leader>pg", telescope.git_files, opts)
     vim.keymap.set('n', "<leader>va", telescope.diagnostics, opts)
     vim.keymap.set('n', "<leader>pq", telescope.quickfix, opts)
@@ -49,7 +85,8 @@
         vim.keymap.set('n', "grn", vim.lsp.buf.rename, opts)
         vim.keymap.set('n', "grr", telescope.lsp_references, opts)
         vim.keymap.set('n', "gra", vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', "grd", vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', "grd", telescope.lsp_definitions, opts)
+        vim.keymap.set('n', "gd", telescope.lsp_definitions, opts)
         vim.keymap.set('n', "grI", telescope.lsp_implementations, opts)
         vim.keymap.set('n', "grs", telescope.lsp_document_symbols, opts)
         vim.keymap.set('n', "grS", telescope.lsp_workspace_symbols, opts)

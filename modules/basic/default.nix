@@ -9,7 +9,7 @@
 
     vim.keymap.set("n", "<space>", "<nop>", { silent = true; noremap = true; })
 
-    vim.opt.clipboard = "unnamedplus"
+    -- vim.opt.clipboard = "unnamedplus"
 
     vim.opt.nu = true
     vim.opt.rnu = false
