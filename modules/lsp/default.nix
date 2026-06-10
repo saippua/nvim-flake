@@ -11,7 +11,7 @@
     lua-language-server
     nixpkgs-fmt # Formatter for nixpkgs
     pyright
-    nodePackages.typescript-language-server # tsserver
+    # nodePackages.typescript-language-server # tsserver
   ];
 
   vim.configRC = ''
